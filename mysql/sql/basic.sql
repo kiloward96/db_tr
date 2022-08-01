@@ -45,7 +45,6 @@ ALTER DATABASE dolphin CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 show variables like 'char%';
 
 select * from product;
-
 SELECT * FROM member
 WHERE 1=1
 -- AND name LIKE 'Lee%'
