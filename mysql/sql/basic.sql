@@ -66,4 +66,4 @@ AND nicKname IS NULL
 -- AND nicKname IS NOT NULL
 -- LIMIT 3
 ;
-UPDATE member SET nickname = '' WHERE seq = 21;
+
