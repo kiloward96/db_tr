@@ -147,8 +147,7 @@ WHERE mb.id LIKE '%96'
 
 -- 상품 리뷰 페이지
 
-SELECT
-	mb.name
+SELECT * from product;
     
     
     
