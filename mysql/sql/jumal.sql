@@ -9,7 +9,7 @@ select
     ,cc.codeName as ccname
     ,cc.seq
     from commonCodeGroup ccg
-INNER JOIN commonCode cc on cc.commonCodeGroup_seq = ccg.seq order by ccg.seq, cc.sort
+INNER JOIN commonCode cc on cc.commonCodeGroup_seq = ccg.seq ORDER BY ccg.seq, cc.sort
 ;
 
 -- 로그인
@@ -67,7 +67,7 @@ UPDATE member SET
 	password = '$NEW_PWD'
     WHERE 1=1
     AND id = '현재 사용자'
-    AND password = ''
+    AND password = '현재 패스워드'
 ;
 
 -- 상품옵션목록
@@ -92,11 +92,11 @@ INNER JOIN productOption pdop on pdop.product_seq = pd.seq
 -- select * from orderList;
 -- select * from memberPayment;
 -- select * from productOption;
-select * from memberChoiceOption;
+-- select * from memberChoiceOption;
 
 SELECT
-	ol.orderStatus AS '주문상태'
-	,ol.orderNumber AS '주문번호'
+	ol.orderNumber AS '주문번호'
+	,ol.orderStatus AS '주문상태'
 	,ol.orderDate AS '주문일자'
     ,pd.productName AS '상품명'
     ,pdo.optionMain AS '옵션'
@@ -109,11 +109,11 @@ INNER JOIN memberChoiceOption mbco on mbco.seq = ol.memberChoiceOption_seq
 INNER JOIN productOption pdo on pdo.seq = mbco.productOption_seq
 INNER JOIN product pd on pd.seq = pdo.product_seq
 
-WHERE mb.id = 'kiloward96' ORDER BY ol.orderDate DESC
+WHERE mb.id = 'kiloward96' AND mb.delYn = 0 ORDER BY ol.orderDate DESC
 ;
 
 -- 주문 상세
-SELECT
+
 
 
 -- 마이페이지 데이터 조회
@@ -128,12 +128,27 @@ SELECT
     ,mbad.addressMain AS '주소'
     ,mbad.addressDetail AS '상세주소'
 FROM member mb
-INNER JOIN memberAddress mbad on mbad.member_seq = mb.seq and mbad.default_yn = 1
+INNER JOIN memberAddress mbad on mbad.member_seq = mb.seq and mbad.default_yn = 0
+WHERE mb.id LIKE '%02'
+UNION ALL
+SELECT
+	mb.id AS '아이디'
+    ,mb.name AS '이름'
+	,mb.gender AS '성별'
+    ,mb.email AS '이메일'
+    ,mb.dob AS '생년월일'
+    ,mbad.addressZipcode AS '우편번호'
+    ,mbad.addressMain AS '주소'
+    ,mbad.addressDetail AS '상세주소'
+FROM member mb
+INNER JOIN memberAddress mbad on mbad.member_seq = mb.seq and mbad.default_yn = 0
+WHERE mb.id LIKE '%96'
 ;
 
 -- 상품 리뷰 페이지
 
 SELECT
 	mb.name
+    
     
     
