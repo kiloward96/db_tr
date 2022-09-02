@@ -3,13 +3,10 @@ USE dolphin;
 -- 공토코드불러오기
 select * from commonCodeGroup;
 select
-	ccg.seq as ccgSEQ
-    ,ccg.groupName as ccg
-    ,cc.sort as ccSEQ
-    ,cc.codeName as ccname
-    ,cc.seq
-    from commonCodeGroup ccg
-INNER JOIN commonCode cc on cc.commonCodeGroup_seq = ccg.seq ORDER BY ccg.seq, cc.sort
+	CC.*
+    ,CCG.*
+    from commonCode CC
+INNER JOIN commonCodeGroup CCG on CC.commonCodeGroup_seq = CCG.seq ORDER BY CCG.seq
 ;
 
 -- 로그인
