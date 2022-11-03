@@ -28,7 +28,6 @@ END;
 -- function
 
 
-
 DELIMITER $$
 CREATE FUNCTION getMemberName (
 seq int
